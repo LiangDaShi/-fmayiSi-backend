@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="https://daxingshebao1.applinzi.com/wangzhansheji/headimg.ico" type="‘image/x-ico’">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>社保计算器</title>
+</head>
+
+<body style=" background-repeat:no-repeat ; background-size:100% 100%; background-attachment:fixed;">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">输入您的工资：</font>
+                </td>
+                <td><input type="text" id="sPrice" value="" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,&#39;&#39;);}).call(this)" onblur="this.v();"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">输入工伤费率(%)：</font>
+                </td>
+                <td><input type="text" id="Num" value="" onkeyup="value=value.replace(/[^\d.]/g,&#39;&#39;)"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <font size="4" color="#844200">温馨提示：一般工伤行业费率在0.2到1.3之间</font>
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="button" id="cacul" value="计算" onclick="cal();" style="width: 85px; height: 50px;border-radius: 6px;background:#B9B973;color:#844200;font-size:20px">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">养老-单位缴纳：</font>
+                </td>
+                <td><input type="text" id="yldw" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">养老-个人缴纳：</font>
+                </td>
+                <td><input type="text" id="ylgr" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">失业-单位缴纳：</font>
+                </td>
+                <td><input type="text" id="shiyedw" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">失业-个人缴纳：</font>
+                </td>
+                <td><input type="text" id="shiyegr" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">工伤-单位缴纳：</font>
+                </td>
+                <td><input type="text" id="gsdw" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">生育-单位缴纳：</font>
+                </td>
+                <td><input type="text" id="sydw" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">医疗-单位缴纳：</font>
+                </td>
+                <td><input type="text" id="yiliaodw" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="4" color="#844200">医疗-个人缴纳：</font>
+                </td>
+                <td><input type="text" id="yiliaogr" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">
+                    <font size="4" color="#844200">单位合计缴纳：</font>
+                </td>
+                <td><input type="text" id="dwhj" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">
+                    <font size="4" color="#844200">个人合计缴纳：</font>
+                </td>
+                <td><input type="text" id="grhj" value="" readonly="true"></td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">
+                    <font size="4" color="#844200">总计缴纳社保：</font>
+                </td>
+                <td><input type="text" id="zhj" value="" readonly="true"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <font size="4" color="#844200">相关计算仅供参考</font>
+    </p>
+    <p style="font-weight:bold;">
+        <font size="4" color="#844200">技术支持：@大兴社保中心</font>
+    </p>
+    <table>
+        <tbody>
+            <tr>
+                <td><a href="https://daxingshebao1.applinzi.com/wangzhansheji/mzsm.php"><input type="button" id="mzsm" value="免责声明" style="width: 300px; height: 30px;border-radius: 6px;background:    #B9B973;color:  #844200;"> </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+    function num(i) {
+        var n = i.toFixed(2); < !--保留两位小数， 可修改位数-- >
+        return n;
+    }
+
+    function cal() { <
+        !--计算社保费用函数-- >
+        var sPrice = document.getElementById('sPrice').value;
+        var Num = document.getElementById('Num').value;
+        var yldw = document.getElementById('yldw').value;
+        var shiyedw = document.getElementById('shiyedw').value;
+        var gsdw = document.getElementById('gsdw').value;
+        var sydw = document.getElementById('sydw').value;
+        var yiliaodw = document.getElementById('yiliaodw').value;
+
+        var ylgr = document.getElementById('ylgr').value;
+        var shiyegr = document.getElementById('shiyegr').value;
+        var yiliaogr = document.getElementById('yiliaogr').value;
+
+
+        var dwhj = document.getElementById('dwhj').value;
+        var grhj = document.getElementById('grhj').value;
+        var zhj = document.getElementById('zhj').value;
+
+
+
+
+        if (sPrice != '' && Num != '') {
+
+            if (sPrice < 3082) {
+                yldw = num(3082 * 0.19);
+                ylgr = num(3082 * 0.08);
+                shiyedw = num(3082 * 0.008);
+                shiyegr = num(3082 * 0.002);
+
+                sydw = num(4624 * 0.008);
+                gsdw = num(4624 * Num / 100);
+                yiliaodw = num(4624 * 0.1);
+                yiliaogr = num(4624 * 0.02 + 3);
+
+                dwhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(sydw) + parseFloat(shiyedw) + parseFloat(
+                    yiliaodw));
+                grhj = num(parseFloat(ylgr) + parseFloat(shiyegr) + parseFloat(yiliaogr));
+                zhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(ylgr) + parseFloat(sydw) + parseFloat(
+                    shiyedw) + parseFloat(shiyegr) + parseFloat(yiliaodw) + parseFloat(yiliaogr));
+
+
+                document.getElementById('gsdw').value = gsdw;
+                document.getElementById('yldw').value = yldw;
+                document.getElementById('ylgr').value = ylgr;
+                document.getElementById('sydw').value = sydw;
+                document.getElementById('shiyedw').value = shiyedw;
+                document.getElementById('shiyegr').value = shiyegr;
+                document.getElementById('yiliaodw').value = yiliaodw;
+                document.getElementById('yiliaogr').value = yiliaogr;
+
+                document.getElementById('dwhj').value = dwhj;
+                document.getElementById('grhj').value = grhj;
+                document.getElementById('zhj').value = zhj;
+
+            } else {
+
+                // sPrice >= 3082
+                if (sPrice > 23118) {
+                    gsdw = num(23118 * Num / 100);
+                    yldw = num(23118 * 0.19);
+                    ylgr = num(23118 * 0.08);
+                    sydw = num(23118 * 0.008);
+                    shiyedw = num(23118 * 0.008);
+                    shiyegr = num(23118 * 0.002);
+                    yiliaodw = num(23118 * 0.1);
+                    yiliaogr = num(23118 * 0.02 + 3);
+
+                    dwhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(sydw) + parseFloat(shiyedw) + parseFloat(
+                        yiliaodw));
+                    grhj = num(parseFloat(ylgr) + parseFloat(shiyegr) + parseFloat(yiliaogr));
+                    zhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(ylgr) + parseFloat(sydw) + parseFloat(
+                        shiyedw) + parseFloat(shiyegr) + parseFloat(yiliaodw) + parseFloat(yiliaogr));
+
+
+                    document.getElementById('gsdw').value = gsdw;
+                    document.getElementById('yldw').value = yldw;
+                    document.getElementById('ylgr').value = ylgr;
+                    document.getElementById('sydw').value = sydw;
+                    document.getElementById('shiyedw').value = shiyedw;
+                    document.getElementById('shiyegr').value = shiyegr;
+                    document.getElementById('yiliaodw').value = yiliaodw;
+                    document.getElementById('yiliaogr').value = yiliaogr;
+
+                    document.getElementById('dwhj').value = dwhj;
+                    document.getElementById('grhj').value = grhj;
+                    document.getElementById('zhj').value = zhj;
+
+
+                } else {
+                    // 23118 >= sPrice >= 3082
+                    // 23118 >= sPrice > 4624
+                    if (4624 < sPrice) {
+
+                        gsdw = num(sPrice * Num / 100);
+                        yldw = num(sPrice * 0.19);
+                        ylgr = num(sPrice * 0.08);
+                        sydw = num(sPrice * 0.008);
+                        shiyedw = num(sPrice * 0.008);
+                        shiyegr = num(sPrice * 0.002);
+                        yiliaodw = num(sPrice * 0.1);
+                        yiliaogr = num(sPrice * 0.02 + 3);
+
+                        dwhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(sydw) + parseFloat(shiyedw) +
+                            parseFloat(yiliaodw));
+                        grhj = num(parseFloat(ylgr) + parseFloat(shiyegr) + parseFloat(yiliaogr));
+                        zhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(ylgr) + parseFloat(sydw) + parseFloat(
+                            shiyedw) + parseFloat(shiyegr) + parseFloat(yiliaodw) + parseFloat(yiliaogr));
+
+
+                        document.getElementById('gsdw').value = gsdw;
+                        document.getElementById('yldw').value = yldw;
+                        document.getElementById('ylgr').value = ylgr;
+                        document.getElementById('sydw').value = sydw;
+                        document.getElementById('shiyedw').value = shiyedw;
+                        document.getElementById('shiyegr').value = shiyegr;
+                        document.getElementById('yiliaodw').value = yiliaodw;
+                        document.getElementById('yiliaogr').value = yiliaogr;
+
+                        document.getElementById('dwhj').value = dwhj;
+                        document.getElementById('grhj').value = grhj;
+                        document.getElementById('zhj').value = zhj;
+
+
+                    } else {
+                        // 4624 >= sPrice > 3082
+                        gsdw = num(4624 * Num / 100);
+                        yldw = num(sPrice * 0.19);
+                        ylgr = num(sPrice * 0.08);
+                        sydw = num(4624 * 0.008);
+                        shiyedw = num(sPrice * 0.008);
+                        shiyegr = num(sPrice * 0.002);
+                        yiliaodw = num(4624 * 0.1);
+                        yiliaogr = num(4624 * 0.02 + 3);
+
+                        dwhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(sydw) + parseFloat(shiyedw) +
+                            parseFloat(yiliaodw));
+                        grhj = num(parseFloat(ylgr) + parseFloat(shiyegr) + parseFloat(yiliaogr));
+                        zhj = num(parseFloat(gsdw) + parseFloat(yldw) + parseFloat(ylgr) + parseFloat(sydw) + parseFloat(
+                            shiyedw) + parseFloat(shiyegr) + parseFloat(yiliaodw) + parseFloat(yiliaogr));
+
+
+
+                        document.getElementById('gsdw').value = gsdw;
+                        document.getElementById('yldw').value = yldw;
+                        document.getElementById('ylgr').value = ylgr;
+                        document.getElementById('sydw').value = sydw;
+                        document.getElementById('shiyedw').value = shiyedw;
+                        document.getElementById('shiyegr').value = shiyegr;
+                        document.getElementById('yiliaodw').value = yiliaodw;
+                        document.getElementById('yiliaogr').value = yiliaogr;
+
+                        document.getElementById('dwhj').value = dwhj;
+                        document.getElementById('grhj').value = grhj;
+                        document.getElementById('zhj').value = zhj;
+                    }
+
+
+
+
+
+
+                }
+
+            }
+
+        }
+        if (Num == 0) {
+            alert('工伤费率不能为0！');
+        }
+        if (Num > 10) {
+            alert('别扯了，工伤费率没这么大的！');
+        }
+
+
+    }
+    </script>
+</body>
+
+</html>
