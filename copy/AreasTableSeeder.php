@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AreasTableSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-		$this->call(AreasTableSeeder::class);
+		$data=Storage::get('area_data.json');
+		$data=json_decode($data);
+		dd($data);
     }
 }
